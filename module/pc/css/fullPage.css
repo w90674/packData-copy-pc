@@ -82,7 +82,7 @@ html, body {
 }
 #fullPage-nav {
     position: fixed;
-    z-index: 100;
+    z-index: 10000;
     margin-top: -32px;
     top: 50%;
     opacity: 1;

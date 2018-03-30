@@ -38,6 +38,7 @@ body .header1 .container-fluid .navbar-header {
   background-position-y: 9px;
   width: 215px;
   height: inherit;
+  margin-left: 20px;
 }
 body .header1 .container-fluid .navbar-nav {
   float: right;
@@ -123,6 +124,9 @@ body .navbar-default .navbar-nav > li > a:hover {
   border-bottom: 3px solid #f2c811;
   background: transparent;
   color: #fff;
+}
+body .pager{
+  overflow: hidden;
 }
 body .pager-text {
   text-align: center;
@@ -421,7 +425,7 @@ body .index .pagerTwo-cuntent .pagerTwo-text span {
 }
 body .index .pagerTwo-cuntent .pagerTwo-switch .pagerTwo-block {
   float: left;
-  width: calc((1200px - (40px * 4)) / 4);
+  width: calc((100% - (40px * 4)) / 4);
   margin: 0 20px 6vh 20px;
   text-align: center;
 }
@@ -535,6 +539,9 @@ body .index .pager3 .pagerThree .pagerThree-right .swiper-container {
 }
 body .index .pager3 .pagerThree .pagerThree-right .swiper-container .swiper-wrapper {
   width: 10000%;
+}
+body .index .pager3 .pagerThree .pagerThree-right .swiper-container .swiper-wrapper .swiper-slide {
+  float: left;
 }
 body .index .pager3 .pagerThree .pagerThree-right .swiper-container .swiper-wrapper .swiper-slide {
   float: left;
@@ -783,10 +790,6 @@ body .index .pager7 {
   margin: 0;
   padding: 0;
 }
-body .index .pager7 .pagerSeven {
-  margin: 0 auto;
-  width: 1200px;
-}
 body .index .pager7 .pagerSeven .pager-Seven-text-line {
   margin: 0 auto;
   margin-bottom: 20px;
@@ -888,77 +891,76 @@ body .index .pager7 .pagerSeven .col-btn1:hover {
 body .index .pager7 .pagerSeven .col-btn:hover {
   background: #ffd92e;
 }
-body .index .pager72 {
+body .index .pager7 {
   width: 100%;
   height: 80vh;
   margin: 0;
   padding: 0;
 }
-body .index .pager72 .pagerSeven {
+body .index .pager7 .pagerSeven {
   margin: 0 auto;
-  width: 1200px;
 }
-body .index .pager72 .pagerSeven .pager-Seven-text-line {
+body .index .pager7 .pagerSeven .pager-Seven-text-line {
   margin: 0 auto;
   margin-bottom: 2vh;
   border-bottom: 2px solid #f2c811;
 }
-body .index .pager72 .pagerSeven .pagerSeven-text {
+body .index .pager7 .pagerSeven .pagerSeven-text {
   padding-top: 14vh;
   padding-bottom: 3vh;
 }
-body .index .pager72 .pagerSeven .pagerSeven-text1 {
+body .index .pager7 .pagerSeven .pagerSeven-text1 {
   padding-top: 18vh;
   padding-bottom: 3vh;
 }
-body .index .pager72 .pagerSeven .pagerSeven-text1 p {
+body .index .pager7 .pagerSeven .pagerSeven-text1 p {
   color: #333;
 }
-body .index .pager72 .pagerSeven .pagerSeven-text1 span {
+body .index .pager7 .pagerSeven .pagerSeven-text1 span {
   color: #444;
 }
-body .index .pager72 .pagerSeven .form-horizontal .form-group {
+body .index .pager7 .pagerSeven .form-horizontal .form-group {
   height: 40px;
   margin-bottom: 15px;
 }
-body .index .pager72 .pagerSeven .form-horizontal .form-group img {
+body .index .pager7 .pagerSeven .form-horizontal .form-group img {
   position: absolute;
   top: 1.6vh;
   left: 1.8vw;
   width: 1.6vh;
   height: 1.6vh;
 }
-body .index .pager72 .pagerSeven .form-horizontal .form-group .form-group-Info {
+body .index .pager7 .pagerSeven .form-horizontal .form-group .form-group-Info {
   position: relative;
 }
-body .index .pager72 .pagerSeven .form-horizontal .form-control {
+body .index .pager7 .pagerSeven .form-horizontal .form-control {
   padding: 1.5vh 2.2vw;
   font-size: 1.6vh;
   height: 5vh;
 }
-body .index .pager72 .pagerSeven .form-horizontal .form-control-text {
+body .index .pager7 .pagerSeven .form-horizontal .form-control-text {
   height: 19vh;
 }
-body .index .pager72 .pagerSeven .form-horizontal .control-label {
+body .index .pager7 .pagerSeven .form-horizontal .control-label {
   float: left;
   padding-right: 0px;
   padding-left: 0px;
   font-size: 1.6vh;
   color: #333;
 }
-body .index .pager72 .pagerSeven .form-horizontal .checkbox-inline {
+body .index .pager7 .pagerSeven .form-horizontal .checkbox-inline {
   float: left;
   font-size: 1.6vh;
   color: #333;
 }
-body .index .pager72 .pagerSeven .form-horizontal .checkbox-inline input[type=checkbox] {
+body .index .pager7 .pagerSeven .form-horizontal .checkbox-inline input[type=checkbox] {
   margin: 2px -19px 0;
 }
-body .index .pager72 .pagerSeven .form-horizontal .form-control:focus {
+body .index .pager7 .pagerSeven .form-horizontal .form-control:focus {
   border-color: #f2c811;
   box-shadow: 0 0 8px rgba(47,35,17,0.2);
 }
-body .index .pager72 .pagerSeven .col-btn {
+body .index .pager7  .col-btn {
   height: 4.2vh;
   border-radius: 50px;
   border: 1px solid #f2c811;
@@ -973,7 +975,7 @@ body .index .pager72 .pagerSeven .col-btn {
   margin-top: 3vh;
   cursor: pointer;
 }
-body .index .pager72 .pagerSeven .col-btn1 {
+body .index .pager7  .col-btn1 {
   height: 45px;
   border-radius: 50px;
   border: 1px solid #f2c811;
@@ -987,13 +989,13 @@ body .index .pager72 .pagerSeven .col-btn1 {
   margin-top: 8vh;
   cursor: pointer;
 }
-body .index .pager72 .pagerSeven .col-btn1 a {
+body .index .pager7 .pagerSev .col-btn1 a {
   color: #333;
 }
-body .index .pager72 .pagerSeven .col-btn1:hover {
+body .index .pager7  .col-btn1:hover {
   background: #ffd92e;
 }
-body .index .pager72 .pagerSeven .col-btn:hover {
+body .index .pager7  .col-btn:hover {
   background: #ffd92e;
 }
 body .about .row {
@@ -1537,29 +1539,40 @@ body .footer .footer-container .footer-content {
   width: 1200px;
   margin: 0 auto;
 }
-body .footer .footer-container .footer-content .footer-content-item {
-  padding-right: 90px;
-  text-align: left;
-  float: left;
+body .footer .footer-container .links {
+  display: flex;
+  justify-content: space-around;
+  padding-right: 50px;
 }
-body .footer .footer-container .footer-content .footer-content-item p {
+body .footer .footer-container  dl{
+  flex: 1;
+  text-align: left;
+}
+body .footer .footer-container  dl dt{
   color: #fff;
   font-size: 16px;
-  margin-bottom: 14px;
+  margin: 10px 0;
+  font-weight: normal;
 }
-body .footer .footer-container .footer-content .footer-content-item ul {
-  padding-left: 0;
-  margin-bottom: 0;
-}
-body .footer .footer-container .footer-content .footer-content-item ul li {
-  list-style: none;
+body .footer .footer-container .links dl a{
   color: #bbb;
   font-size: 14px;
-  line-height: 23px;
 }
-body .footer .footer-container .footer-content .footer-content-item ul li a {
+
+body .footer .footer-container .footer-content .footer-content-item{
+  position: relative ;
+  padding: auto 0 20px 40px;
+  float: left;
+}
+body .footer .footer-container .footer-content .footer-content-item dt{
+  font-size: 16px;
+  color: #fff;
+}
+body .footer .footer-container  dd{
   color: #bbb;
+  font-size: 14px;
 }
+
 body .footer .footer-container .footer-content .shuxian {
   position: absolute;
   left: 0;
