@@ -1,0 +1,39 @@
+<div>
+    <nav class="navbar navbar-default header1" role="navigation" >
+        <div class="container-fluid">
+            <div class="navbar-header"></div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="active" active="index"><a href="index.html">首页</a></li>
+                    <li active="product"><a href="product.html">财务分析</a></li>
+                    <li active="screen"><a href="screen.html">大屏分析</a></li>
+                    <li active="about"><a href="about.html">关于我们</a></li>
+                    <li active="packing"><a href="http://www.packingdata.com/pai">进入社区</a></li>
+                    <li active="try" class="apply"><a href="try.html">申请体验</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<script>
+
+    //    // 点击导航切换active
+    //    $('.navbar-nav li').on('click',function () {
+    //        $('.navbar-nav li').removeClass('active');
+    //        $(this).addClass('active');
+    //    })
+    //	根据路由更换active
+    $(function () {
+        var li = $(".navbar-nav").children("li");
+        for (var i = 0; i < li.length; i++) {
+            var url = window.location.pathname;
+            url = url.replace("/", "");
+            console.log($(li[i]).attr('active'))
+            if (url.indexOf($(li[i]).attr('active'))!=-1) {
+                $(li[i]).addClass('active');
+            } else {
+                $(li[i]).removeClass('active');
+            }
+        }
+    })
+</script>

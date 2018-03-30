@@ -1,0 +1,355 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>派可数据，让数据使用更简单！Packing Data，让财务分析更简单</title>
+    <link rel="icon" href="/pc/packing/images/title_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style_002.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/sweetalert2.css">
+    <script src="plugin/jquery/jquery-3.2.1.min.js"></script>
+    <script>
+
+        $(function () {
+            var el = document.getElementById('inlineCheckbox1');
+            el.checked = true;
+            var isClick = true
+            $('input[name=user_name]').focus(function () {
+                $('#from_name').css('display', 'none')
+            })
+            $('input[name=mobile]').focus(function () {
+                $('#from_mobile').css('display', 'none')
+            })
+            $('input[name=email]').focus(function () {
+                $('#from_email').css('display', 'none')
+            })
+            $('input[name=company]').focus(function () {
+                $('#from_company').css('display', 'none')
+            })
+            $('input[name=position]').focus(function () {
+                $('#from_position').css('display', 'none')
+            })
+            $('input[name=describe]').focus(function () {
+                $('#from_describe').css('display', 'none')
+            })
+            $('check[name=inlineCheckbox]').focus(function () {
+                $('#from_checkbox').css('display', 'none')
+            })
+
+            $('.col-btn').on('click', function(){
+                /*非空验证*/
+                var noNull = /^[^\s]*$/
+                /*手机*/
+                var reg = /^1[345678]\d{9}$/
+                /*邮箱手机验证*/
+                var noEmail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+
+                var nameNull = noNull.test($('input[name=user_name]').val())
+                if ($('input[name=user_name]').val() == '' || nameNull != true) {
+                    $('#from_name').css('display', 'block')
+                    $('#from_name').text('请填写姓名,不能为空、不能输入空格！')
+                    return false
+                }
+                var companyNull = noNull.test($('input[name=company]').val())
+                if ($('input[name=company]').val() == '' || companyNull != true) {
+                    $('#from_company').css('display', 'block')
+                    $('#from_company').text('请填写公司,不能为空、不能输入空格！')
+                    return false
+                }
+                var positionNull = noNull.test($('input[name=position]').val())
+                if ($('input[name=position]').val() == '' || positionNull != true) {
+                    $('#from_position').css('display', 'block')
+                    $('#from_position').text('请填写职位,不能为空、不能输入空格！')
+                    return false
+                }
+                var mobileNull = noNull.test($('input[name=mobile]').val())
+                var flag = reg.test($('input[name=mobile]').val()) //true
+                if ($('input[name=mobile]').val() == '' || flag != true || mobileNull != true) {
+                    $('#from_mobile').css('display', 'block')
+                    $('#from_mobile').text('请填写正确的手机号！')
+                    return false
+                }
+                var emailNo = noEmail.test($('input[name=email]').val()) //true
+                var emailNull = noNull.test($('input[name=email]').val()) //true
+                if ($('input[name=email]').val() == '' || emailNo != true || emailNull != true) {
+                    $('#from_email').css('display', 'block')
+                    $('#from_email').text('请填写正确的邮箱格式！')
+                    return false
+                }
+                if ($('input[name=describe]').val() == '') {
+                    $('#from_describe').css('display', 'block')
+                    $('#from_describe').text('请填写咨询内容！')
+                    return false
+                }
+
+                var checkboxList = [];
+                var arr = document.getElementsByName("inlineCheckbox")
+                for(k in arr){
+                    if(arr[k].checked)
+                        checkboxList.push(arr[k].value);
+
+                }
+                if(checkboxList.length == 0){
+                    $('#from_checkbox').css('display', 'block')
+                    $('#from_checkbox').text('至少选择一项！')
+                    return false
+                }
+                //将userDepartment用|处理，并去掉最后一个|，便于传参
+                var userDepartment=(checkboxList.join("|")).toString();
+                userDepartment=(userDepartment.substring(userDepartment.length-1)=='|')?userDepartment.substring(0,userDepartment.length-1):userDepartment;
+
+                $('.col-btn').off('click');
+
+                $.ajax({
+                    //需要修改
+//           url: '/pai/experience/saveCuApplyExperience.pk',
+                    url: '',
+                    type: 'post',
+                    data: {
+                        userName: $('#user_name').val(),
+                        userPhone: $('#mobile').val(),
+                        userEmail: $('#email').val(),
+                        enterpriseName: $('#company').val(),
+                        userDepartment: userDepartment,
+                        userPosition: $('#position').val(),
+                        ctContent: $('#describe').val(),
+                    },
+                    success: function (json) {
+                        if (json.success == '11') {
+                            swal({
+                                text:json.msg,
+                                type:'success',
+                                confirmButtonText:'完成',
+                            }).then(function () {
+                                location.href='http://www.allooo.com/index.html'
+                            })
+                        }
+                    }
+                });
+            } )
+        })
+
+    </script>
+    <style>
+        body {
+            font-family: "微软雅黑";
+            /*导航*/
+            /*导航*/
+            /*按钮*/
+            /*横线*/
+        }
+        .header2 {
+            background: #171512;
+        }
+        .try_p{
+            position: relative;
+            font-size: 12px;
+            left: 150px;
+            width: 300px;
+            padding: 0;
+            margin: 0;
+            color: #f21111;
+            height: 15px;
+        }
+        .navbar{
+            min-height: 0px;
+        }
+        .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover{
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="try-nav">
+    <nav class="navbar navbar-default header2" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header"></div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="active" active="index"><a href="index.html">首页</a></li>
+                    <li active="product"><a href="product.html">财务分析</a></li>
+                    <li active="screen"><a href="screen.html">大屏分析</a></li>
+                    <li active="about"><a href="about.html">关于我们</a></li>
+                    <li active="packing"><a href="/pai">进入社区</a></li>
+                    <li class="apply"><a href="try.html">申请体验</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<!--内容屏7-->
+<div class="index">
+    <div class="pager7 section container">
+        <div class="row pagerSeven">
+            <div class="col-md-12">
+                <div class="pager-text pagerSeven-text">
+                    <p>申请体验</p>
+                    <div class="pager-text-line pager-Seven-text-line"></div>
+                    <span>您想了解的，只差这一步，把剩下的问题交给我们！</br></span>
+                </div>
+                <form class="form-horizontal">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-9 form-group-Info">
+                                <input type="text" name="user_name" class="form-control" id="user_name" placeholder="姓名">
+                                <img src=/pc/images/page07/icon-01.png>
+                            </div>
+                            <p id="from_name" class="try_p"></p>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-9 form-group-Info">
+                                <input type="text" class="form-control" name="company" id="company" placeholder="公司">
+                                <img src=/pc/images/page07/icon-02.png>
+                            </div>
+                            <p id="from_company" class="try_p"></p>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-9 form-group-Info">
+                                <input type="text" name="position" class="form-control" id="position" placeholder="职位">
+                                <img src=/pc/images/page07/icon-03.png>
+                            </div>
+                            <p id="from_position" class="try_p"></p>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-9 form-group-Info">
+                                <input type="email" name="mobile" class="form-control" id="mobile" placeholder="手机">
+                                <img src=/pc/images/page07/icon-04.png>
+                            </div>
+                            <p id="from_mobile" class="try_p"></p>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-9 form-group-Info">
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                                <img src=/pc/images/page07/icon-05.png>
+                            </div>
+                            <p id="from_email" class="try_p"></p>
+                            <div class="col-sm-1"></div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="col-sm-10 form-group" style="padding-right: 40px;">
+              <textarea name="describe" class="form-control form-control-text" placeholder="咨询内容"
+                        style="padding: 5px 0px 0px 10px;height: 320px" id="describe"></textarea>
+                        </div>
+                        <p id="from_describe" class="try_p"></p>
+                        <div class="col-sm-2"></div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-1"></div>
+                        <label class="control-label">在哪里了解派可数据:</label>
+                        <div class="col-sm-9">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="inlineCheckbox" id="inlineCheckbox1" value="派可公众号">派可公众号
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="inlineCheckbox" id="inlineCheckbox2" value="百度搜索">百度搜索
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="inlineCheckbox" id="inlineCheckbox3" value="天善智能">天善智能
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="inlineCheckbox" id="inlineCheckbox4" value="今日头条">今日头条
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="inlineCheckbox" id="inlineCheckbox5" value="知乎社区">知乎社区
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="inlineCheckbox" id="inlineCheckbox6" value="用友伙伴"> 用友伙伴
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="inlineCheckbox" id="inlineCheckbox8" value="朋友推荐"> 朋友推荐
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="inlineCheckbox" id="inlineCheckbox7" value="其他">其他
+                            </label>
+                            <p id="from_checkbox" class="try_p" style="left: 0;z-index: -1"></p>
+                        </div>
+
+                    </div>
+                </form>
+                <div class="col-btn left">提交</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container footer" style="width: 100%; bottom: 0px;position: relative">
+    <div class="col-sm-12 footer-container">
+        <div class="footer-content row">
+            <div class="col-md-6">
+                <div class="row">
+                    <!--产品应用-->
+                    <div class="footer-content-item">
+                        <p>产品应用</p>
+                        <ul>
+                            <li><a href="/product.html" class="fontDec2" target="_blank">财务分析</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--关于我们-->
+                    <div class="footer-content-item ">
+                        <p>关于我们</p>
+                        <ul>
+                            <li><a href="/about.html" class="fontDec2" target="_blank">关于 Packing Data</a></li>
+                            <li><a href="/pai">派可数据社区</a></li>
+                        </ul>
+                    </div>
+                    <!--友情链接-->
+                    <div class="footer-content-item ">
+                        <p>友情链接</p>
+                        <ul>
+                            <li><a href="https://www.hellobi.com" class="fontDec2" target="_blank">天善智能</a></li>
+                            <li><a href="http://www.yonyou.com" class="fontDec2" target="_blank">用友</a></li>
+                            <li><a href="http://www.kingdee.com" class="fontDec2" target="_blank">金蝶</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <div class="row">
+                    <div class="footer-content-item col-md-7" style="position: relative;padding-left: 40px;padding-bottom: 20px;padding-right: 0;">
+                        <!--两根竖线-->
+                        <i class="shuxian"></i>
+                        <p>联系我们</p>
+                        <ul>
+                            <li class="fontDec2">电话：010-85399411</li>
+                            <li class="fontDec2">邮件：public@packingdata.com</li>
+                            <li class="fontDec2">地址：北京市朝阳区大黄庄南里甲 8 号</li>
+                            <li class="fontDec2">&emsp;&emsp;&emsp;爱工场第十二文化产业园 2 层</li>
+                        </ul>
+                    </div>
+                    <!--关注微信账号-->
+                    <div class="footer-content-item col-md-5">
+                        <p>关注微信公众号</p>
+                        <ul>
+                            <li class="fontDec3">
+                                <img src="images/paixiaoke.png" style="width :110px;height: 110px"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="footer-bottom">
+            版权所有：北京派可数据科技有限公司 ©2017 京ICP备 17050589
+        </p>
+    </div>
+</div>
+
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="plugin/sweetalert2.js"></script>
+<script src="plugin/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script>
+</script>
+</body>
+</html>
