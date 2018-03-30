@@ -1529,51 +1529,46 @@ body .footer {
   background: #292929;
   margin-bottom: 0;
 }
-body .footer .footer-container {
-  width: 100%;
-  height: 100%;
-  padding-top: 26px;
-  position: relative;
+body .footer .footer-content{
+  min-width: 1000px;
 }
-body .footer .footer-container .footer-content {
-  width: 1200px;
-  margin: 0 auto;
-}
-body .footer .footer-container .links {
+body .footer  .links {
+  width: 50%;
+  float: left;
   display: flex;
   justify-content: space-around;
   padding-right: 50px;
 }
-body .footer .footer-container  dl{
+body .footer  dl{
   flex: 1;
   text-align: left;
 }
-body .footer .footer-container  dl dt{
+body .footer   dl dt{
   color: #fff;
   font-size: 16px;
   margin: 10px 0;
   font-weight: normal;
 }
-body .footer .footer-container .links dl a{
+body .footer  .links dl a{
   color: #bbb;
   font-size: 14px;
 }
 
-body .footer .footer-container .footer-content .footer-content-item{
+body .footer  .footer-content .footer-content-item{
   position: relative ;
-  padding: auto 0 20px 40px;
+  padding: 0 0 20px 40px;
   float: left;
 }
-body .footer .footer-container .footer-content .footer-content-item dt{
+body .footer  .footer-content .footer-content-item dt{
   font-size: 16px;
   color: #fff;
 }
-body .footer .footer-container  dd{
+body .footer   dd{
   color: #bbb;
   font-size: 14px;
 }
 
-body .footer .footer-container .footer-content .shuxian {
+body .footer  .footer-content .shuxian {
   position: absolute;
   left: 0;
   top: 0;
@@ -1581,8 +1576,9 @@ body .footer .footer-container .footer-content .shuxian {
   width: 2px;
   border-left: 1px solid #666;
   border-right: 2px solid #111;
+  margin-right: 10px;
 }
-body .footer .footer-container .footer-bottom {
+body .footer  .footer-bottom {
   position: absolute;
   width: 100%;
   bottom: 0;
